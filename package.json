@@ -72,7 +72,11 @@
       "button",
       "dialog",
       "drawer",
-      "row"
+      "row",
+      "form",
+      "form-item",
+      "input",
+      "link"
     ]
   }
 }

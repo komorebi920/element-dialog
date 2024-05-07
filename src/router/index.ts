@@ -19,6 +19,15 @@ const routes: Array<RouteConfig> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  {
+    path: "/dialog",
+    name: "Dialog",
+    // route level code-splitting
+    // this generates a separate chunk (dialog.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "dialog" */ "../views/Dialog.vue"),
+  },
 ];
 
 const router = new VueRouter({
