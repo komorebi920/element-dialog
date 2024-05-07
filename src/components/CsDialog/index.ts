@@ -5,11 +5,7 @@ import { isVNode } from "@/utils";
 import CsDialogBody from "./body.vue";
 import CsDialogFooter from "./footer.vue";
 
-export * from "./types";
-
 const CsDialogConstructor = Vue.extend(Main);
-
-let instance: CsDialogComponent;
 const instances: CsDialogComponent[] = [];
 let seed = 1;
 
@@ -18,7 +14,6 @@ let seed = 1;
  */
 const _CsDialog: CsDialog = (options: CsDialogOptions) => {
   const payload = { ...options };
-
   const userOnClose = payload.onClose;
   const id = `cs-dialog-${seed++}`;
 
@@ -27,8 +22,7 @@ const _CsDialog: CsDialog = (options: CsDialogOptions) => {
   };
 
   const { $slots, ...data } = payload;
-
-  instance = new CsDialogConstructor({ data });
+  const instance: CsDialogComponent = new CsDialogConstructor({ data });
 
   if ($slots?.title && isVNode($slots?.title)) {
     instance.$slots.title = [$slots?.title];
@@ -100,4 +94,5 @@ const install = (Vue: VueConstructor): void => {
 };
 
 export default { install };
+export * from "./types";
 export { CsDialogBody, CsDialogFooter };

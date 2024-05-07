@@ -37,16 +37,17 @@ export default class Dialog extends Vue {
         console.log("beforeClose");
         done();
       },
-      onOpen() {
+      onOpen: () => {
         console.log("open");
       },
-      onOpened() {
+      onOpened: () => {
         console.log("opened");
       },
-      onClose() {
+      onClose: () => {
         console.log("close");
       },
-      onClosed() {
+      onClosed: () => {
+        this.vmMap?.delete(key);
         console.log("closed");
       },
       $slots: {
