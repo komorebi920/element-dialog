@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "yarn theme:remove && yarn theme:build && vue-cli-service serve",
+    "build": "yarn theme:remove && yarn theme:build && vue-cli-service build --report",
+    "theme:init": "et --init src/styles/element-variables.scss",
+    "theme:build": "et --config src/styles/element-variables.scss --out src/theme",
+    "theme:remove": "rimraf src/theme",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.14",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
@@ -32,12 +36,16 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^1.0.3",
+    "babel-plugin-component": "^1.1.1",
+    "element-theme-chalk": "^2.15.14",
+    "element-themex": "^1.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",
     "prettier": "^2.2.1",
-    "sass": "^1.26.5",
+    "rimraf": "^5.0.5",
+    "sass": "~1.32.13",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
     "vue-template-compiler": "^2.6.11"
@@ -49,6 +57,22 @@
     "*.{js,jsx,vue,ts,tsx}": [
       "vue-cli-service lint",
       "git add"
+    ]
+  },
+  "element-theme": {
+    "browsers": [
+      "ie > 9",
+      "last 2 versions"
+    ],
+    "out": "./src/theme",
+    "config": "./src/styles/element-variables.css",
+    "theme": "element-theme-chalk",
+    "minimize": false,
+    "components": [
+      "button",
+      "dialog",
+      "drawer",
+      "row"
     ]
   }
 }
