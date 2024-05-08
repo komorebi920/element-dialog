@@ -1,4 +1,6 @@
-# element-imperative-components
+# element-ui-secondary-packaging
+
+element-ui 组件二次封装
 
 ## Project setup
 ```
